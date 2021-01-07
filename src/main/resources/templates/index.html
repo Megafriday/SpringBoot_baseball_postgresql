@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Listing Players - baseball</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Listing Players</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>名前</th>
+					<th>年齢</th>
+					<th>チーム名</th>
+					<th>守備位置</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="player:${players}" th:object="${player}">
+					<td th:text="*{id}"></td>
+					<td th:text="*{name}"></td>
+					<td th:text="*{age}"></td>
+					<td th:text="*{team}"></td>
+					<td th:text="*{position}"></td>
+					<td><a class="btn btn-primary btn-xs"
+						th:href="@{/players/{id}(id=*{id})}">参照</a></td>
+					<td><a class="btn btn-primary btn-xs"
+						th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>
+					<td>
+						<form th:action="@{/players/{id}/delete(id=*{id})}" th:method="delete">
+							<input class="btn btn-danger btn-xs" type="submit" value="削除" />
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-primary" href="/players/new">新規作成</a>
+	</div>
+</body>
+</html>

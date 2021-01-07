@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  lang="ja">
+	<meta charset="UTF-8" />
+	<title>New Player - baseball</title>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+		crossorigin="anonymous">
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="container">
+		<h1>New Player</h1>
+
+		<form th:action="@{/players}" th:method="post" th:object="${player}">
+			<div class="form-group"	th:classappend="${#fields.hasErrors('name')}? has-error">
+				<label class="control-label">名前</label>
+				<input class="form-control"	type="text" th:field="*{name}" />
+				<span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+			</div>
+			<div class="form-group" th:classappend="${#fields.hasErrors('age')}? has-error">
+          		<label class="control-label">年齢</label>
+          		<input class="form-control" type="number" th:field="*{age}" />
+          		<span class="text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+	        </div>
+    	    <div class="form-group" th:classappend="${#fields.hasErrors('team')}? has-error">
+        		<label class="control-label">チーム名</label>
+          		<input class="form-control" type="text" th:field="*{team}" />
+          		<span class="text-danger" th:if="${#fields.hasErrors('team')}" th:errors="*{team}"></span>
+        	</div>
+        	<div class="form-group" th:classappend="${#fields.hasErrors('position')}? has-error">
+          		<label class="control-label">守備位置</label>
+          		<input class="form-control" type="text" th:field="*{position}" />
+          		<span class="text-danger" th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></span>
+        	</div>
+        	<button class="btn btn-primary" type="submit">作成</button>
+		</form>
+
+		<div class="float-right">
+			<a class="btn btn-link" href="/players">一覧画面へ</a>
+		</div>
+	</div>
+</body>
+</html>

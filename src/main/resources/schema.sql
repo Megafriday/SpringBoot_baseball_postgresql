@@ -1,0 +1,9 @@
+CREATE SEQUENCE IF NOT EXISTS player_id_seq;
+
+CREATE TABLE IF NOT EXISTS player (
+	id INTEGER DEFAULT nextval('player_id_seq') PRIMARY KEY,
+	name VARCHAR(20),
+	age INTEGER DEFAULT 0,
+	team VARCHAR(100),
+	position VARCHAR(100)
+);

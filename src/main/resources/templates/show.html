@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Show Player - baseball</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Show Player</h1>
+		<div th:object="${player}">
+			<div>
+				<label>ID</label>
+				<p th:text="*{id}"></p>
+			</div>
+			<div>
+				<label>名前</label>
+				<p th:text="*{name}"></p>
+			</div>
+			<div>
+				<label>年齢</label>
+				<p th:text="*{age}"></p>
+			</div>
+			<div>
+				<label>チーム名</label>
+				<p th:text="*{team}"></p>
+			</div>
+			<div>
+				<label>守備位置</label>
+				<p th:text="*{position}"></p>
+			</div>
+		</div>
+		<div>
+			<a class="btn btn-primary" th:href="@{/players/{id}/edit(id=*{id})}">編集</a>
+		</div>
+		<div class="pull-right">
+			<a class="btn btn-link" href="/players">一覧画面へ</a>
+		</div>
+	</div>
+</body>
+</html>
