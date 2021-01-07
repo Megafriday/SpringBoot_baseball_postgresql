@@ -4,3 +4,6 @@ baseballのPostgresqlのバージョン
 # DB
 - PostgreSQL
 - Spring JPA
+
+# URL
+https://baseball-postgresql.herokuapp.com/players
